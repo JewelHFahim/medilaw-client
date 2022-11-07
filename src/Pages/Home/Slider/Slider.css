@@ -1,0 +1,16 @@
+.slider img{
+  width: 1280px;
+  height: 450px;
+}
+
+.slider:after {
+    content:'';
+    position:absolute;
+    left:0; 
+    top:0;
+    width: 1280px;
+    height: 450px;
+    border-radius: 12px;
+    display:inline-block;
+    background: linear-gradient(to right, #151515 0%, rgba(21, 21, 21, 0) 100%); 
+}
