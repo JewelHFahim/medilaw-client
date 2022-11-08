@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../../Assests/logo.png';
-import './Header.css'
+import { UserContext } from "../../../Context/AuthContex";
+import './Header.css';
+import { FaSignOutAlt } from 'react-icons/fa';
+import toast, { Toaster } from 'react-hot-toast';
+
+
+
+const notify = () => toast.success('Logout Successfull');
 
 const Header = () => {
+
+  const {user, logOut} = useContext(UserContext);
+
+
+
   const menuItems = (
     <>
-      <li className="font-bold text-white">
+      <li className="font-semibold text-white">
         <Link to="/">Home</Link>
       </li>
-      <li className="font-bold text-white">
+      <li className="font-semibold text-white">
         <Link to="/services">Services</Link>
       </li>
     </>
   );
+
+  const handleLogOut = () =>{
+    logOut()
+    .then(()=>{})
+    .catch(error =>{console.error(error)})
+  }
 
   return (
     <div className="navbar bg-slate-900 ">
@@ -48,7 +66,12 @@ const Header = () => {
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-      <button className="btn btn-outline btn-info btn-sm  ">Button</button>
+      {
+        user?.uid ?
+        <button onClick={handleLogOut}  className="btn btn-outline btn-info mr-5"> <FaSignOutAlt/></button>
+        :
+        <Link to="/login"><button className="text-white font-semibold mr-5" >Login</button></Link>
+      }
       </div>
     </div>
   );
