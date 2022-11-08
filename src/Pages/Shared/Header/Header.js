@@ -6,7 +6,7 @@ import './Header.css'
 const Header = () => {
   const menuItems = (
     <>
-      <li className="font-semibold">
+      <li className="font-bold text-slate-900">
         <Link to="/">Home</Link>
       </li>
     </>
