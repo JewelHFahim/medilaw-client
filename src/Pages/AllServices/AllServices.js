@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FaStar, FaArrowRight } from "react-icons/fa";
 import ServiceTopSection from "../Home/Services/ServiceTopSection";
 
@@ -26,9 +26,9 @@ const AllServices = () => {
                   {allserv.rating}
                   <FaStar className="text-yellow-500 ml-2" />
                 </p>
-                <button className="btn btn-outline text-info">
-                  <FaArrowRight />
-                </button>
+                <Link to={`/services/${allserv._id}`}>
+                <button className="btn btn-outline text-info"> <FaArrowRight /> </button>
+                </Link>
               </div>
             </div>
           </div>

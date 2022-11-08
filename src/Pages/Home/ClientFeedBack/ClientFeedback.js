@@ -1,33 +1,16 @@
-import React from 'react';
+import React from "react";
+// import './ClientFeedBack.css'
+import client from '../../../Assests/clients.jpg'
 
 const ClientFeedback = () => {
-    return (
-        <div>
-            <div className="carousel w-full my-20">
-  <div id="slide4" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide6" className="btn btn-circle">❮</a> 
-      <a href="#slide5" className="btn btn-circle">❯</a>
+  return (
+    <div>
+      <div className="hero  my-20 bg-pic">
+        {/* <div className="hero-overlay bg-opacity-60"></div> */}
+        <div><img src={client} alt="" /></div>
+      </div>
     </div>
-  </div> 
-  <div id="slide5" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide4" className="btn btn-circle">❮</a> 
-      <a href="#slide6" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide6" className="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide5" className="btn btn-circle">❮</a> 
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-</div>
-        </div>
-    );
+  );
 };
 
 export default ClientFeedback;
