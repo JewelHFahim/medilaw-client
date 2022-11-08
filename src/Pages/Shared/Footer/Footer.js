@@ -1,11 +1,58 @@
-import React from 'react';
+import React from "react";
+import logo from "../../../Assests/logo.png";
 
 const Footer = () => {
-    return (
-        <div>
-            <h1>Footer</h1>
+  return (
+    <div>
+
+      <footer className="footer p-10 bg-slate-800 text-base-content mt-20">
+        <div className="text-slate-200">
+          <img style={{ width: "120px", height: "100px" }} src={logo} alt="" />
+          <p >
+            MediLaw Pvt Ltd.
+            <br />
+            Providing reliable law service since 2015
+          </p>
         </div>
-    );
+        <div className="text-teal-200">
+          <span className=" font-bold text-white">Contact Info</span>
+          <p>
+             Farmgatey <br /> Manik Mia Avenue, <br /> Dhaka-1215,
+            Bangladesh
+          </p>
+          <p className="font-medium">
+            +8801911-209322 <br /> Contact@Attornasite.co
+          </p>
+        </div>
+        <div className="text-teal-200">
+          <span className=" font-bold text-white">Practice Areas</span>
+          <a className="link link-hover">Coporate & Securities</a>
+          <a className="link link-hover">Health Care Law</a>
+          <a className="link link-hover">Construction & Engineering</a>
+          <a className="link link-hover">Private Fund</a>
+        </div>
+        <div className="text-teal-200">
+          <span className=" font-bold text-white">Company</span>
+          <a className="link link-hover">Lending Law</a>
+          <a className="link link-hover">Real Estate Law</a>
+          <a className="link link-hover">Insurance Law</a>
+          <a className="link link-hover">Ecommerce Law</a>
+        </div>
+      </footer>
+
+      <footer className="footer items-center px-10 py-4 bg-slate-900 text-neutral-content">
+  <div className="items-center grid-flow-col">
+    <p>Copyright © 2022 - All right reserved</p>
+  </div> 
+  <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+    <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+    </a> 
+    <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a>
+    <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+  </div>
+</footer>
+    </div>
+  );
 };
 
 export default Footer;

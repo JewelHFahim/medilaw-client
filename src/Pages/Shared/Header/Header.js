@@ -6,14 +6,14 @@ import './Header.css'
 const Header = () => {
   const menuItems = (
     <>
-      <li className="font-bold text-slate-900">
+      <li className="font-bold text-white">
         <Link to="/">Home</Link>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-slate-300 ">
+    <div className="navbar bg-slate-900 ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
