@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home/Home";
 import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
 import Login from "../Pages/Login/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
+import Error from "../Pages/Others/Error";
 import PersonalReview from "../Pages/Review/PersonalReview";
 import Review from "../Pages/Review/Review";
 import SingleReview from "../Pages/Review/SingleReview";
@@ -47,8 +48,13 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
-            }
+            },
+            {
+                path: "*",
+                element: <Error></Error>
+              },
         ]
+        
     }
 ])
 

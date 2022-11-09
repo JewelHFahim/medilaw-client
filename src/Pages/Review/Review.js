@@ -2,10 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../Context/AuthContex";
 import SingleReview from "./SingleReview";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Review = () => {
     
     const {user} = useContext(UserContext);
+    const notify = () => toast('Here is your toast.');
+
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -49,7 +53,7 @@ const Review = () => {
       <textarea className="textarea textarea-info w-full" name="comment" type="text" placeholder="Your Review"></textarea>
       <input name="email"  type="email" defaultValue={user?.email} readOnly placeholder="email" className="input input-bordered input-accent w-full max-w-xs" />
       <br />
-      <button type="submit" className="btn btn-info mt-2">Submit</button>
+      <button onClick={notify} type="submit" className="btn btn-info mt-2">Submit</button>
         </form>
         :
         <p className="text-center text-xl">Leave a Comment? <Link to="/login" className="text-teal-500" >Login</Link> </p>
