@@ -44,7 +44,12 @@ const SignUp = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data))
+          .then((data) => {
+            if(data.acknowledged  === true){
+              alert('Login Successfull');
+            }
+            form.reset();
+          })
     }
 
     const handleGoogle = () =>{

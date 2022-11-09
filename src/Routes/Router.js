@@ -7,6 +7,7 @@ import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
 import Login from "../Pages/Login/Login/Login";
 import SignUp from "../Pages/Login/SignUp/SignUp";
 import Error from "../Pages/Others/Error";
+import Test from "../Pages/Others/Test";
 import PersonalReview from "../Pages/Review/PersonalReview";
 import Review from "../Pages/Review/Review";
 import SingleReview from "../Pages/Review/SingleReview";
@@ -50,9 +51,17 @@ const router = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
+                path: '/review',
+                element: <Review></Review>,
+            },
+            {
                 path: "*",
                 element: <Error></Error>
               },
+              {
+                path: '/test',
+                element: <Test></Test>
+              }
         ]
         
     }

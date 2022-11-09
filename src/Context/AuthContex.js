@@ -39,6 +39,7 @@ const AuthContex = ({children}) => {
         }
     },[])
 
+
     const authInfo = {user, createUser, loading, googleLogin, logIn, logOut  };
 
     return (

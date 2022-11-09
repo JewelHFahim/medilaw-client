@@ -6,7 +6,6 @@ import './SingleReview.css'
 
 const SingleReview = ({review}) => {
 
-
   const {user} = useContext(UserContext)
 
     const {email, comment} = review;
@@ -21,7 +20,7 @@ const SingleReview = ({review}) => {
     }
     <div className="flex items-center">
     <div>
-      <p><span className="font-semibold">{user?.displayName}</span> </p>
+      <p><span className="font-semibold">{}</span> </p>
       <p>{email}</p>
     </div>
     <div className="divider divider-horizontal"></div>

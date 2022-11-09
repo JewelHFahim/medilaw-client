@@ -1,24 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { UserContext } from "../../Context/AuthContex";
 import SingleReview from "./SingleReview";
 import toast, { Toaster } from 'react-hot-toast';
 
 
-const Review = () => {
-    
+const Review = ({user2}) => {
+
     const {user} = useContext(UserContext);
-    const notify = () => toast('Here is your toast.');
+    const notify = () => toast.success('Review added Successfully');
 
 
     const handleSubmit = (event) =>{
         event.preventDefault();
         const comment = event.target.comment.value;
         const email = user?.email;
-        const service_id = user?._id;
-        console.log(service_id , comment, email);
+        const name = user?.name;
+        console.log(comment, email);
         const review = {
-            comment, email, service_id 
+             name, comment, email
         }
 
         fetch('http://localhost:5000/review',{
@@ -28,8 +28,13 @@ const Review = () => {
             },
             body: JSON.stringify(review)
         })
-        .then(res=>res.json)
-        .then(data=>console.log(data))
+        .then(res=>res.json())
+        .then((data) => {
+            console.log(data);
+            if (data.acknowledged === true) {
+              event.target.reset();
+            }
+          })
     }
 
     const [reviews, setReviews] = useState([]);
@@ -38,6 +43,7 @@ const Review = () => {
         .then(res=> res.json())
         .then(data=>setReviews(data))
     },[])
+
 
   return (
     <div >
@@ -54,6 +60,7 @@ const Review = () => {
       <input name="email"  type="email" defaultValue={user?.email} readOnly placeholder="email" className="input input-bordered input-accent w-full max-w-xs" />
       <br />
       <button onClick={notify} type="submit" className="btn btn-info mt-2">Submit</button>
+      <Toaster position="top-center"/>
         </form>
         :
         <p className="text-center text-xl">Leave a Comment? <Link to="/login" className="text-teal-500" >Login</Link> </p>
