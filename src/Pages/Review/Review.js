@@ -35,17 +35,6 @@ const Review = () => {
         .then(data=>setReviews(data))
     },[])
 
-    // const [revis, setRevi] = useState([]);
-    // useEffect(() => {
-    //   if (user?.email) {
-    //     fetch(`http://localhost:5000/review?email=${user?.email}`)
-    //       .then((res) => res.json())
-    //       .then((data) => setRevi(data))
-    //       .catch((error) => console.error(error));
-    //   }
-    // }, [user?.email]);
-
-
   return (
     <div >
     {
