@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import Review from "../../Review/Review";
 
 
 const ServiceDetails = () => {
@@ -8,7 +9,8 @@ const ServiceDetails = () => {
   const { titile, img, price, rating, description } = singleService;
 
   return (
-      <div className="card lg:card-side bg-base-100 shadow-xl my-20 rounded-none">
+    <div>
+      <div className="card lg:card-side bg-base-100 shadow-xl my-12 rounded-none">
         <figure className=" lg:w-1/2">
           <img src={img} alt="Album" />
         </figure>
@@ -20,6 +22,10 @@ const ServiceDetails = () => {
             <p className="flex items-center">Start From: <span className="text-lg ml-1 font-semibold mx-1">{price}</span>$</p>
           </div>
         </div>
+      </div>
+      <p className="text-center text-2xl text-teal-900">Users Reviews Here </p>
+      <hr />
+      <Review></Review>
       </div>
   );
 };

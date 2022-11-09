@@ -5,7 +5,7 @@ import facebookLogo from "../../../Assests/social/facebook.png";
 import linkedInLogo from "../../../Assests/social/linkedin.png";
 import "./Login.css";
 import { UserContext } from "../../../Context/AuthContex";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -14,6 +14,9 @@ import toast, { Toaster } from 'react-hot-toast';
 const notify = () => toast.success('Login Successfull');
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
   const { logIn, googleLogin } = useContext(UserContext);
   const googleProvider = new GoogleAuthProvider();
 
@@ -34,6 +37,7 @@ const Login = () => {
           </div>
         </div>;
         form.reset();
+        navigate(from, {replcae: true})
       })
       .catch((error) => console.log(error));
   };
@@ -42,6 +46,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, {replcae: true})
       })
       .catch((error) => console.error(error));
   };
@@ -80,7 +85,7 @@ const Login = () => {
                 <label className="label">
                   <a href="!#" className="label-text-alt link link-hover">
                     New in MediLaw?
-                    <Link to="signup" className="text-teal-600 font-bold">
+                    <Link to="/signup" className="text-teal-600 font-bold">
                       Sign Up
                     </Link>
                   </a>

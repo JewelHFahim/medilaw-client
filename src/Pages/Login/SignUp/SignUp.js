@@ -17,9 +17,16 @@ const SignUp = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({name, email, password});
+        console.log({name, photoURL, email, password});
+
+        const user = {
+          name,
+          photoURL,
+          email
+        }
 
         createUser(email, password)
         .then(result =>{
@@ -27,6 +34,17 @@ const SignUp = () => {
           console.log(user);
         })
         .catch(error => console.error(error))
+
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
     }
 
     const handleGoogle = () =>{
@@ -47,6 +65,7 @@ const SignUp = () => {
             <img src={login} alt="" />
           </div>
           <div className="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 w-2/3">
+
             <form onSubmit={handleSignin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -56,6 +75,18 @@ const SignUp = () => {
                   name="name"
                   type="text"
                   placeholder="name"
+                  className="input input-bordered"
+                />
+              </div>
+              
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  name="photoURL"
+                  type="photoURL"
+                  placeholder="Your Profile Pic URL"
                   className="input input-bordered"
                 />
               </div>
@@ -82,7 +113,7 @@ const SignUp = () => {
                 />
                 <label className="label">
                   <a href="!#" className="label-text-alt link link-hover">
-                    Already have an account? <Link to="login" className="text-teal-600 font-bold" >Login</Link>
+                    Already have an account? <Link to="/login" className="text-teal-600 font-bold" >Login</Link>
                   </a>
                 </label>
               </div>

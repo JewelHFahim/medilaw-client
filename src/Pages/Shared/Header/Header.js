@@ -4,11 +4,9 @@ import logo from '../../../Assests/logo.png';
 import { UserContext } from "../../../Context/AuthContex";
 import './Header.css';
 import { FaSignOutAlt } from 'react-icons/fa';
-import toast, { Toaster } from 'react-hot-toast';
 
 
 
-const notify = () => toast.success('Logout Successfull');
 
 const Header = () => {
 
@@ -23,6 +21,12 @@ const Header = () => {
       </li>
       <li className="font-semibold text-white">
         <Link to="/services">Services</Link>
+      </li>
+      <li className="font-semibold text-white">
+        <Link to="/blog">Blog</Link>
+      </li>
+      <li className="font-semibold text-white">
+        <Link to="/personalreview">My Reviews</Link>
       </li>
     </>
   );
