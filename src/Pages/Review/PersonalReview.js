@@ -28,7 +28,7 @@ const PersonalReview = () => {
         method: "DELETE",
         headers: {
           'content-type': 'application/json',
-          authorization: `Bearer ${localStorage.getItem('mediLawToken')}`,
+          // authorization: `Bearer ${localStorage.getItem('mediLawToken')}`,
 
         }
       })

@@ -27,7 +27,7 @@ const Review = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem('mediLawToken')}`,
+        // authorization: `Bearer ${localStorage.getItem('mediLawToken')}`,
       },
       body: JSON.stringify(review),
     })
