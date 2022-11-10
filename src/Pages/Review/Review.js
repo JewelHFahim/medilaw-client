@@ -26,15 +26,16 @@ const Review = () => {
         fetch('http://localhost:5000/review',{
             method: "POST",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                // authorization: `Bearer ${localStorage.getIem('mediLawToken')}`,
             },
             body: JSON.stringify(review)
         })
         .then(res=>res.json())
         .then((data) => {
             console.log(data);
-            if (data.acknowledged === true) {
-              alert('Reveie Successfull')
+            if (data.acknowledged > 0) {
+              alert('Reveiw Added Successfully')
               event.target.reset();
             }
           })

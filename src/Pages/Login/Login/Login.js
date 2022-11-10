@@ -17,7 +17,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || '/';
-  const { logIn, googleLogin } = useContext(UserContext);
+  const {user, logIn, googleLogin } = useContext(UserContext);
   const googleProvider = new GoogleAuthProvider();
 
   const handleSignin = (event) => {
@@ -30,6 +30,18 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         const user = result.user;
+        fetch("http://localhost:5000/jwt",{
+          method: "POST",
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify({email: user?.email})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          localStorage.setItem('mediLawToken', data.token)
+        })
+
         console.log(user);
         <div className="toast toast-top toast-center">
           <div className="alert alert-info">

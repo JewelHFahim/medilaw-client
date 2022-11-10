@@ -79,6 +79,8 @@ const PersonalReview = () => {
           key={rv._id}>
           <div className="flex items-center">
 
+            <div className="text-left">
+            {/* Personal Review Section Photo */}
             {rv.photoURL ? (
               <img src={rv.photoURL} alt="" />
             ) : (
@@ -86,18 +88,21 @@ const PersonalReview = () => {
                 <FaUserAlt />
               </p>
             )}
-
-            <form className="flex">
-              <div>
+            <div>
+            {/* Name and Email Section */}
                 <p><span className="font-semibold">{rv.name}</span></p>
                 <small className="flex items-center"> <FaEnvelope className="text-normal text-info mr-2" />{rv.email}</small>
               </div>
+            </div>
+
+            <form className="flex">
               <div className="divider divider-horizontal"></div>
               <p className="my-2">{rv.comment} </p>
               {/* <textarea className="textarea textarea-info w-full" name="comment" defaultValue={rv.comment} type="text" placeholder="Your Review"></textarea> */}
-              
             </form>
           </div>
+          <div className="divider divider-horizontal"></div>
+
 
           <div className="text-center">
             <button
