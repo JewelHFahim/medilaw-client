@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../../Hook/Hook";
 import ClientFeedback from "../ClientFeedBack/ClientFeedback";
 import Services from "../Services/Services";
 import ServiceTopSection from "../Services/ServiceTopSection";
@@ -8,6 +9,8 @@ import Statistics from "../Statistics/Statistics";
 
 const Home = () => {
   const [services, setServices] = useState([]);
+  useTitle('Home');
+
 
   useEffect(() => {
     fetch("http://localhost:5000/services")

@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../Context/AuthContex";
 import { FaUserAlt, FaTrashAlt, FaEdit, FaEnvelope } from "react-icons/fa";
-import toast, { Toaster } from 'react-hot-toast';
-
-
-
-const notify = () => toast('Here is your toast.');
+import useTitle from "../../Hook/Hook";
 
 
 const PersonalReview = () => {
   const { user } = useContext(UserContext);
-
+  useTitle('My Reviews');
   const [revis, setRevi] = useState([]);
+
+
+
+
   useEffect(() => {
     if (user?.email) {
       fetch(`http://localhost:5000/personalreview?email=${user?.email}`)
@@ -21,7 +21,9 @@ const PersonalReview = () => {
     }
   }, [user?.email]);
 
-  const [currentReview, setCurrentReview] = useState([]);
+
+
+
   const handleDelete = (id) => {
     const agreed = window.confirm("Are you sure want to Delete?");
     if (agreed) {
@@ -32,20 +34,33 @@ const PersonalReview = () => {
         .then((data) => {
           if (data.deletedCount > 0) {
             alert("Deleted Successfully");
-            const remainingReviews = revis.filter((rmo) => rmo._id !== id);
-            setCurrentReview(remainingReviews);
           }
         });
     }
   };
 
-
-  // const [visitors, setVisitors] = useState([]);
-  // useEffect(()=>{
-  //     fetch('http://localhost:5000/users')
-  //     .then(res=> res.json())
-  //     .then(data=>setVisitors(data))
-  // },[])
+  
+  //Review Update Section
+  // const handleUpdate = (id, event) =>{
+  //   event.preventDefault();
+  //   const comment = event.target.comment.value;
+  //   const upreview = { comment }
+    
+  //   fetch(`http://localhost:5000/personalreview/${id}`,{
+  //     method: 'PUT',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(upreview)
+  //   })
+  //   .then(res=> res.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     if(data.modifiedCount > 0){
+  //       alert('Updated Successfully')
+  //     }
+  //   })
+  // }
 
 
   return (
@@ -63,28 +78,25 @@ const PersonalReview = () => {
           className=" photoURL w-10/12 mx-auto border border-slate-300 shadow-lg rounded-lg m-2 p-8 flex items-center justify-between"
           key={rv._id}>
           <div className="flex items-center">
-            {user?.photoURL ? (
-              <img src={user?.photoURL} alt="" />
+
+            {rv.photoURL ? (
+              <img src={rv.photoURL} alt="" />
             ) : (
               <p className="mr-4 text-5xl">
                 <FaUserAlt />
               </p>
             )}
 
-            <div className="flex">
+            <form className="flex">
               <div>
-                <p>
-                  <span className="font-semibold">{user?.displayName}</span>
-                </p>
-                <small className="flex items-center">
-                  {" "}
-                  <FaEnvelope className="text-normal text-info mr-2" />{" "}
-                  {rv.email}
-                </small>
+                <p><span className="font-semibold">{rv.name}</span></p>
+                <small className="flex items-center"> <FaEnvelope className="text-normal text-info mr-2" />{rv.email}</small>
               </div>
               <div className="divider divider-horizontal"></div>
               <p className="my-2">{rv.comment} </p>
-            </div>
+              {/* <textarea className="textarea textarea-info w-full" name="comment" defaultValue={rv.comment} type="text" placeholder="Your Review"></textarea> */}
+              
+            </form>
           </div>
 
           <div className="text-center">

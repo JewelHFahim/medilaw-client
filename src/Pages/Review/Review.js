@@ -5,7 +5,7 @@ import SingleReview from "./SingleReview";
 import toast, { Toaster } from 'react-hot-toast';
 
 
-const Review = ({user2}) => {
+const Review = () => {
 
     const {user} = useContext(UserContext);
     const notify = () => toast.success('Review added Successfully');
@@ -13,12 +13,14 @@ const Review = ({user2}) => {
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        const comment = event.target.comment.value;
+        const form = event.target;
+        const comment = form.comment.value;
         const email = user?.email;
-        const name = user?.name;
-        console.log(comment, email);
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        console.log(name, photoURL, email, comment);
         const review = {
-             name, comment, email
+             name, photoURL,  email, comment
         }
 
         fetch('http://localhost:5000/review',{
@@ -32,6 +34,7 @@ const Review = ({user2}) => {
         .then((data) => {
             console.log(data);
             if (data.acknowledged === true) {
+              alert('Reveie Successfull')
               event.target.reset();
             }
           })
@@ -56,8 +59,19 @@ const Review = ({user2}) => {
      <form onSubmit={handleSubmit} className="w-9/12 mx-auto my-10">
      <p className=" ">Leave a Comment</p>
     
-      <textarea className="textarea textarea-info w-full" name="comment" type="text" placeholder="Your Review"></textarea>
-      <input name="email"  type="email" defaultValue={user?.email} readOnly placeholder="email" className="input input-bordered input-accent w-full max-w-xs" />
+      <textarea className="textarea textarea-info w-full" name="comment" required type="text" placeholder="Your Review"></textarea>
+
+
+
+      <input name="name"  type="text" placeholder="Name" required className="input input-bordered input-accent w-full max-w-xs mr-2" />
+    
+      <input name="photoURL"  type="photoURL" placeholder="photoURL" required className="input input-bordered input-accent w-full max-w-xs" />
+
+
+
+
+
+      <input name="email"  type="email" defaultValue={user?.email} readOnly placeholder="email" className="input input-bordered input-accent w-full max-w-xs mt-2" />
       <br />
       <button onClick={notify} type="submit" className="btn btn-info mt-2">Submit</button>
       <Toaster position="top-center"/>
