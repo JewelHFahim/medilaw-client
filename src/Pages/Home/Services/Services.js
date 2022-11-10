@@ -26,7 +26,17 @@ const Services = ({ service }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{titile}</h2>
-          <p>{description}</p>
+
+          <p>
+            {description.length > 100 ? (
+              <div>
+                {description.slice(0, 100) + "..."}
+              </div>
+            ) : (
+              <p>{description}</p>
+            )}
+          </p>
+
           <div className="card-actions justify-end flex">
             <p className="flex items-center">{rating}<FaStar className="text-yellow-500 ml-2"/></p>
             <p className="flex items-center">{price} $</p>

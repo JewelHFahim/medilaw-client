@@ -60,17 +60,8 @@ const Review = () => {
      <p className=" ">Leave a Comment</p>
     
       <textarea className="textarea textarea-info w-full" name="comment" required type="text" placeholder="Your Review"></textarea>
-
-
-
       <input name="name"  type="text" placeholder="Name" required className="input input-bordered input-accent w-full max-w-xs mr-2" />
-    
       <input name="photoURL"  type="photoURL" placeholder="photoURL" required className="input input-bordered input-accent w-full max-w-xs" />
-
-
-
-
-
       <input name="email"  type="email" defaultValue={user?.email} readOnly placeholder="email" className="input input-bordered input-accent w-full max-w-xs mt-2" />
       <br />
       <button onClick={notify} type="submit" className="btn btn-info mt-2">Submit</button>

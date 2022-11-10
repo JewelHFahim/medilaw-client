@@ -104,13 +104,11 @@ const PersonalReview = () => {
               className="btn btn-outline btn-error btn-sm ml-4 mb-2"
               onClick={() => handleDelete(rv._id)}
             >
-              {" "}
-              <FaTrashAlt />{" "}
-            </button>{" "}
+              <FaTrashAlt />
+            </button>
             <br />
             <button className="btn btn-outline btn-success btn-sm ml-4">
-              {" "}
-              <FaEdit />{" "}
+              <FaEdit />
             </button>
           </div>
         </div>

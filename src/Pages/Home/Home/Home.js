@@ -24,7 +24,7 @@ const Home = () => {
       <div>
         <ServiceTopSection></ServiceTopSection>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 my-10">
-          {services.slice(3).map((service) => (
+          {services.slice(0-3).map((service) => (
             <Services key={service._id} service={service}></Services>
           ))}
         </div>
