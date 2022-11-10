@@ -7,17 +7,15 @@ import "./Login.css";
 import { UserContext } from "../../../Context/AuthContex";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
-
-
-const notify = () => toast.success('Login Successfull');
+const notify = () => toast.success("Login Successfull");
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || '/';
-  const {user, logIn, googleLogin } = useContext(UserContext);
+  const from = location.state?.from?.pathname || "/";
+  const { logIn, googleLogin } = useContext(UserContext);
   const googleProvider = new GoogleAuthProvider();
 
   const handleSignin = (event) => {
@@ -30,26 +28,26 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         const user = result.user;
-        fetch("http://localhost:5000/jwt",{
+        fetch("https://medilaw-server.vercel.app/jwt", {
           method: "POST",
           headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
           },
-          body: JSON.stringify({email: user?.email})
+          body: JSON.stringify({ email: user?.email }),
         })
-        .then(res=>res.json())
-        .then(data=>{
-          localStorage.setItem('mediLawToken', data.token)
-        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("mediLawToken", data.token);
+          });
 
         console.log(user);
         <div className="toast toast-top toast-center">
           <div className="alert alert-info">
-              <span>New mail arrived.</span>
+            <span>Log in Successfull.</span>
           </div>
         </div>;
         form.reset();
-        navigate(from, {replcae: true})
+        navigate(from, { replcae: true });
       })
       .catch((error) => console.log(error));
   };
@@ -58,7 +56,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, {replcae: true})
+        navigate(from, { replcae: true });
       })
       .catch((error) => console.error(error));
   };

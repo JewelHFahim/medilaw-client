@@ -11,6 +11,7 @@ import PersonalReview from "../Pages/Review/PersonalReview";
 import Review from "../Pages/Review/Review";
 import PrivateRoutes from "./PrivateRoutes";
 import SingleBlog from "../Pages/Blog/SingleBlog";
+import EditReview from "../Pages/Review/EditReview";
 
 const router = createBrowserRouter([
   {
@@ -24,14 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <AllServices></AllServices>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://medilaw-server.vercel.app/services"),
       },
 
       {
         path: "/services/:id",
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://medilaw-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/login",
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        loader: () => fetch("http://localhost:5000/blog"),
+        loader: () => fetch("https://medilaw-server.vercel.app/blog"),
         element: <Blog></Blog>,
       },
       {
@@ -62,8 +63,12 @@ const router = createBrowserRouter([
       {
         path: "/blog/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/blog/${params.id}`),
+          fetch(`https://medilaw-server.vercel.app/blog/${params.id}`),
         element: <SingleBlog></SingleBlog>,
+      },
+      {
+        path: '/editreview/:id',
+        element: <EditReview></EditReview>
       },
       {
         path: "*",

@@ -5,12 +5,14 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDS7uy2chDGtshFIhghalYoBS71HK2IIlc",
-  authDomain: "medilaw-bc770.firebaseapp.com",
-  projectId: "medilaw-bc770",
-  storageBucket: "medilaw-bc770.appspot.com",
-  messagingSenderId: "1037580286648",
-  appId: "1:1037580286648:web:a29d2cfcd38a0f9163124d"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
+
+
 };
 
 // Initialize Firebase

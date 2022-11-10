@@ -9,11 +9,10 @@ import Statistics from "../Statistics/Statistics";
 
 const Home = () => {
   const [services, setServices] = useState([]);
-  useTitle('Home');
-
+  useTitle("Home");
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://medilaw-server.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -24,7 +23,7 @@ const Home = () => {
       <div>
         <ServiceTopSection></ServiceTopSection>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 my-10">
-          {services.slice(0-3).map((service) => (
+          {services.slice(0 - 3).map((service) => (
             <Services key={service._id} service={service}></Services>
           ))}
         </div>
