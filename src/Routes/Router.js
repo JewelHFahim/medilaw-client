@@ -2,8 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import AllServices from "../Pages/AllServices/AllServices";
 import Blog from "../Pages/Blog/Blog";
-import BlogDetails from "../Pages/Blog/BlogDetails";
-import SingleBlog from "../Pages/Blog/SingleBlog";
 import Home from "../Pages/Home/Home/Home";
 import ServiceDetails from "../Pages/Home/Services/ServiceDetails";
 import Login from "../Pages/Login/Login/Login";
@@ -12,8 +10,8 @@ import Error from "../Pages/Others/Error";
 import Test from "../Pages/Others/Test";
 import PersonalReview from "../Pages/Review/PersonalReview";
 import Review from "../Pages/Review/Review";
-import SingleReview from "../Pages/Review/SingleReview";
 import PrivateRoutes from "./PrivateRoutes";
+import SingleBlog from "../Pages/Blog/SingleBlog"
 
 
 const router = createBrowserRouter([
@@ -60,6 +58,11 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 element: <Error></Error>
+              },
+              {
+                path: "/blog/:id",
+                loader: ({params})=> fetch(`http://localhost:5000/blog/${params.id}`),
+                element: <SingleBlog></SingleBlog>
               },
               {
                 path: '/test',
